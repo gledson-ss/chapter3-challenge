@@ -1,1 +1,48 @@
-// TODO
+.container {
+  margin-top: 65px;
+
+  .list{
+    .itemList {
+      list-style: none;
+      .title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        color: var(--heading);
+      }
+      .subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        color: var(--body);
+        margin-top: 8px;
+      }
+
+      .infoContainer {
+        margin-top: 24px;
+        display: flex;
+        .infoContent{
+          display: flex;
+          align-items: center;
+          .text {
+            color: var(--info);
+            margin-left: 8px;
+            font-size: 14px;
+            font-family: Inter, sans-serif;
+          }
+          .icon {
+            color: var(--info);
+            width: 20px;
+            height: 20px;
+          }
+          & + .infoContent{
+            margin-left: 24px;
+          }
+        }
+
+        }
+      & + .itemList {
+        margin-top: 48px;
+      }
+    }
+  }
+}
