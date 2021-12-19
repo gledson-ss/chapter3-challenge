@@ -1,1 +1,49 @@
-// TODO
+.image {
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.textBody {
+  .title {
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--heading);
+    font-family: Inter, sans-serif;
+  }
+  .infoContainer {
+    padding-top: 24px;
+    display: flex;
+    .infoContent{
+      display: flex;
+      align-items: center;
+      .text {
+        color: var(--info);
+        margin-left: 8px;
+        font-size: 14px;
+        font-family: Inter, sans-serif;
+      }
+      .icon {
+        color: var(--info);
+        width: 20px;
+        height: 20px;
+      }
+      & + .infoContent{
+        margin-left: 24px;
+      }
+    }
+  }
+  .content {
+    margin-top: 64px;
+    .titleContent{
+      color: var(--heading);
+      font-size: 32px;
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .bodyContent {
+      color: var(--heading);
+      font-family: Inter, sans-serif;
+    }
+  }
+}

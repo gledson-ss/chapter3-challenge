@@ -4,21 +4,25 @@
   .list{
     .itemList {
       list-style: none;
+      :hover{
+        cursor: pointer;
+      }
       .title {
         font-family: 'Inter', sans-serif;
         font-weight: 700;
         font-size: 28px;
+        margin: 0;
         color: var(--heading);
       }
       .subtitle {
         font-family: 'Inter', sans-serif;
         font-size: 18px;
         color: var(--body);
-        margin-top: 8px;
+        padding-top: 8px;
       }
 
       .infoContainer {
-        margin-top: 24px;
+        padding-top: 24px;
         display: flex;
         .infoContent{
           display: flex;
@@ -43,6 +47,21 @@
       & + .itemList {
         margin-top: 48px;
       }
+    }
+  }
+  .buttonLoadMore{
+    outline: none;
+    background: none;
+    border: none;
+    :hover{
+      cursor: pointer;
+    }
+    margin-top: 64px;
+    .buttonText {
+      color: var(--highlight);
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
     }
   }
 }
