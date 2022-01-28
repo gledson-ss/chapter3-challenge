@@ -13,6 +13,7 @@ import styles from './post.module.scss';
 
 interface Post {
   first_publication_date: string | null;
+  last_publication_date: Date;
   data: {
     title: string;
     banner: {
@@ -33,12 +34,41 @@ interface PostProps {
   post: Post;
 }
 
+type LastDate = {
+  mounth: {
+    year: string;
+    mounth: string;
+    day: string;
+  };
+  hour: string;
+};
+
 export default function Post({ post }: PostProps): JSX.Element {
+  function handleLastDate(date: string): LastDate {
+    const MounthHour = date.split(' ');
+    const Mounth = MounthHour[0].split('-');
+    const Hour = MounthHour[1];
+    const MounthHourSeparated = {
+      mounth: {
+        year: Mounth[0],
+        mounth: Mounth[1],
+        day: Mounth[2],
+      },
+      hour: Hour,
+    };
+    return MounthHourSeparated;
+  }
   const [firstPublicationData] = useState(
     format(new Date(post.first_publication_date), 'dd MMM yyyy', {
       locale: ptBR,
     })
   );
+  const [lastDateEdited] = useState(
+    handleLastDate(
+      format(new Date(post.last_publication_date), 'yyyy-MMM-dd HH:mm')
+    )
+  );
+
   const router = useRouter();
   return (
     <div className={commonStyles.generalContainer}>
@@ -66,10 +96,13 @@ export default function Post({ post }: PostProps): JSX.Element {
               <p className={styles.text}>4 min</p>
             </div>
           </div>
+          <p
+            className={styles.lastPublicationDate}
+          >{`* editado em ${lastDateEdited.mounth.day} ${lastDateEdited.mounth.mounth} ${lastDateEdited.mounth.year}, às ${lastDateEdited.hour}`}</p>
           <div>
             {post.data.content.map(field => {
               return (
-                <div className={styles.content}>
+                <div className={styles.content} key={field.heading}>
                   <p className={styles.titleContent}>{field.heading}</p>
                   <div
                     dangerouslySetInnerHTML={{
