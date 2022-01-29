@@ -3,21 +3,22 @@ import styles from './commentay.module.scss';
 
 const Commentary: React.FC = () => {
   useEffect(() => {
-    const anchor = document.getElementById('script-comments');
-    anchor.setAttribute('src', 'https://utteranc.es/client.js');
-    anchor.setAttribute('crossorigin', 'anonymous');
-    anchor.setAttribute('repo', 'gledson-ss/utterances-commentary');
-    anchor.setAttribute('issue-term', 'pathname');
-    anchor.setAttribute('theme', 'github-light');
+    const script = document.createElement('script');
+    const div = document.getElementById('inject-comments-for-uterances');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('repo', 'gledson-ss/utterances-commentary');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'github-light');
+
+    div.appendChild(script);
   }, []);
 
   return (
     <div
       id="inject-comments-for-uterances"
       className={styles.injectCommentsForUterances}
-    >
-      <script id="script-comments" async />
-    </div>
+    />
   );
 };
 
